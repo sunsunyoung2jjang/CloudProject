@@ -2,13 +2,13 @@ import boto3
 
 #ec2 = boto3.resource('ec2')
 client = boto3.client('ec2')
-
+#check your git
 
 
 def main():
-    print('--------------------------------------')
+    print('----------------------------------------------')
     print('1. list instance     2. available zones ')
-    print('-------------------------------------')
+    print('----------------------------------------------')
 
 def start_instance():
     output = input('Enter instance id: ')
