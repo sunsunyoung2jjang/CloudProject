@@ -29,8 +29,10 @@ def list_instance():
 ###2 show available zone list
 def available_zones(): 
     print('available zones')
-
-    regions = [region['RegionName'] for region in client.describe_regions()['Regions']]
+    zone = client.describe_availability_zones()
+    for zone in client.describe_availability_zones()['AvailabilityZones']:
+        print('[id]  '+zone['ZoneId']+', [region]  '+zone['RegionName']+', [zone]  '+ zone['ZoneName'] )
+    
 
 ###3 start instance 
 def start_instance():
@@ -43,11 +45,11 @@ def start_instance():
 def available_regions(): 
   
     # Retrieves all regions/endpoints that work with EC2
-    response = ec2.describe_regions()
+    response = client.describe_regions()
     print('Regions:', response['Regions'])
 
     # Retrieves availability zones only for region of the ec2 object
-    response = ec2.describe_availability_zones()
+    response = client.describe_availability_zones()
     print('Availability Zones:', response['AvailabilityZones'])
     
     
@@ -69,7 +71,7 @@ def reboot_instance():
     response = client.reboot_instances(InstanceIds=[Input_id])
     print('Rebooting .... '+Input_id)
     print('Successfully rebooted instance  >'+Input_id)
-
+    
 ### 8 list images
 def list_images(): 
     find_image = client.describe_images(Owners=['self'])
