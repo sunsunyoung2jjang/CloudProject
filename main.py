@@ -3,17 +3,18 @@ import boto3
 ec2 = boto3.resource('ec2')
 client = boto3.client('ec2')
 
+### Main Menu
 
-def Main_menu(): ### Main Menu
+def Main_menu(): 
     print('=====================================================================')
-    print('           [2021-2]       Cloud Computing                  ')
+    print('               [2021-2]       Cloud Computing                  ')
     print('        SOFTWARE     2017038024   LEE SUN YOUNG   TERM PROJECT')
     print('=====================================================================')
     print('    1. list instance               2. available zones')
     print('    3. start instance              4. available regions')
     print('    5. stop instance               6. create instance')
     print('    7. reboot instance             8. list images')
-    print('    99. quit')
+    print('    9. Delete instance             99. quit')
     print('=====================================================================')
     
 ### 1 show instance list
@@ -75,7 +76,7 @@ def list_images():
     for image in find_image['Images']:
         print('[ImageID] ' + image['ImageId']+', [Name] ' + image['Name'] +', [Owner] '+ image['OwnerId'])
 
-
+### Additional function
 ### 9 Delete instance
 def delete_instance():
     Input_id = input("Enter instance id: ")
@@ -108,7 +109,7 @@ while(True):
         reboot_instance()
     elif Num == 8: 
         list_images()
-    elif Num == 9: 
+    elif Num == 9:  #additional function
         delete_instance()    
     elif Num == 99: 
         exit()
