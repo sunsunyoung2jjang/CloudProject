@@ -89,8 +89,8 @@ def delete_instance():
 def exit():
     quit()
 
-while(True):
-#while(False):
+#while(True):
+while(False):
     Main_menu()
     Num = int(input("Enter an integer >> "))
     if Num == 1:
