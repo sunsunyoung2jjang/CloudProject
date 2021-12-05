@@ -45,12 +45,9 @@ def start_instance():
 def available_regions(): 
   
     # Retrieves all regions/endpoints that work with EC2
-    response = client.describe_regions()
-    print('Regions:', response['Regions'])
-
-    # Retrieves availability zones only for region of the ec2 object
-    response = client.describe_availability_zones()
-    print('Availability Zones:', response['AvailabilityZones'])
+    region = client.describe_regions()
+    for region in client.describe_regions()['Regions']:
+        print('[Region]  '+region['RegionName']+',    [Endpoint]  '+region['Endpoint'])
     
     
 ### 5 Stop instance
@@ -79,6 +76,14 @@ def list_images():
         print('[ImageID] ' + image['ImageId']+', [Name] ' + image['Name'] +', [Owner] '+ image['OwnerId'])
 
 
+### 9 Delete instance
+def delete_instance():
+    Input_id = input("Enter instance id: ")
+    response = client.terminate_instances(InstanceIds=[Input_id])
+    print('Successfully delete instance  >'+  Input_id+'\n')
+    
+
+
 ### 99 END
 def exit():
     quit()
@@ -103,6 +108,8 @@ while(True):
         reboot_instance()
     elif Num == 8: 
         list_images()
+    elif Num == 9: 
+        delete_instance()    
     elif Num == 99: 
         exit()
     else:
