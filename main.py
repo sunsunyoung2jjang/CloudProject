@@ -4,7 +4,6 @@ ec2 = boto3.resource('ec2')
 client = boto3.client('ec2')
 
 ### Main Menu
-
 def Main_menu(): 
     print('=====================================================================')
     print('               [2021-2]       Cloud Computing                  ')
@@ -83,7 +82,6 @@ def delete_instance():
     response = client.terminate_instances(InstanceIds=[Input_id])
     print('Successfully delete instance  >'+  Input_id+'\n')
     
-
 
 ### 99 END
 def exit():
