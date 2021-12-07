@@ -1,6 +1,5 @@
 # CloudProject
 
-Python용 AWS SDK(Boto3)
 Python용 AWS SDK인 boto3를 사용
 
 ################## 기능설명 ###################
